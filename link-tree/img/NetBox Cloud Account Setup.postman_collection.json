@@ -1,0 +1,2282 @@
+{
+	"info": {
+		"_postman_id": "b1242203-299c-4bf2-ba8d-7f425d5e04ae",
+		"name": "NetBox Cloud Account Setup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26784846"
+	},
+	"item": [
+		{
+			"name": "Show Commands",
+			"item": [
+				{
+					"name": "Organizations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/organization/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"organization",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Regions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/region/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"region",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Namespaces",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Environment",
+			"item": [
+				{
+					"name": "create Org",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Organization Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"org-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{org-name}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/organization/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"organization",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Namespace",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Namespace Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"ns-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{org-name}}\",\n    \"organization\": \"{{org-id}}\",\n    \"region\": \"{{region}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Storage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Storage Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"stor-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{org-name}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/storage/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"storage",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Postgres",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Postgres Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"pg-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{org-name}}\",\n  \"num_dbs\": 1,\n  \"max_cap\": 12,\n  \"min_cap\": 0.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/postgres/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"postgres",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create PG Database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"PG Database Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"pgdb-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{org-name}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/postgres/{{pg-id}}/database/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"postgres",
+								"{{pg-id}}",
+								"database",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Redis",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Redis Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"rds-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{org-name}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/redis/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"redis",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Main RDS Database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Main RDS Database Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"rdb-main-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"main\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/redis/{{rds-id}}/database/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"redis",
+								"{{rds-id}}",
+								"database",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Cache RDS Database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Main RDS Database Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"rdb-cache-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"cache\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/redis/{{rds-id}}/database/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"redis",
+								"{{rds-id}}",
+								"database",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Ingress",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ingress Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"ing-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{org-name}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/ingress/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"ingress",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create NetBox",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"NetBox Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"nb-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{org-name}}\",\n  \"version\": {\n    \"major\": {{nb_major}},\n    \"minor\": {{nb_minor}},\n    \"patch\": {{nb_patch}}\n  },\n  \"domain\": \"{{nb_domain}}\",\n  \"redis_db\": \"{{rdb-main-id}}\",\n  \"redis_cache_db\": \"{{rdb-cache-id}}\",\n  \"postgres_db\": \"{{pgdb-id}}\",\n  \"ingress\": \"{{ing-id}}\",\n  \"storage\": \"{{stor-id}}\",\n  \"replicas\": {{nb_replicas}},\n  \"cpu\": {{nb_cpu}},\n  \"memory\": {{nb_memory}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/netbox/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"netbox",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Start Environment",
+			"item": [
+				{
+					"name": "create Org",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Organization Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"org-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{org-name}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/organization/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"organization",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"User Creation\", function () {",
+									"    pm.expect(pm.response.text()).to.include(pm.collectionVariables.get(\"contact-email\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"{{contact-email}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/organization/{{org-id}}/user/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"organization",
+								"{{org-id}}",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Namespace",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Namespace Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"ns-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{org-name}}\",\n    \"organization\": \"{{org-id}}\",\n    \"region\": \"{{region}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "start Namespace",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Namespace Start\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/start",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check Namespace",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Namespace Check\", function () {",
+									"  pm.expect(pm.response.json().status).to.eql(\"Active\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{org-name}}\",\n    \"organization\": \"{{org-id}}\",\n    \"region\": \"reg-use1v2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/check",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Storage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Storage Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"stor-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{org-name}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/storage/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"storage",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "start Storage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Storage Start\", function () {",
+									"  pm.expect(pm.response.json().access_key).to.exist;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/storage/{{stor-id}}/start",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"storage",
+								"{{stor-id}}",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Postgres",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Postgres Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"pg-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{org-name}}\",\n  \"num_dbs\": 1,\n  \"max_cap\": 12,\n  \"min_cap\": 0.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/postgres/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"postgres",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "start Postgres",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Postgres Start\", function () {",
+									"  pm.expect(pm.response.json().status).to.eql(\"available\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/postgres/{{pg-id}}/start",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"postgres",
+								"{{pg-id}}",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check Postgres",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Postgres Start\", function () {",
+									"  pm.expect(pm.response.json().status).to.eql(\"available\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/postgres/{{pg-id}}/check",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"postgres",
+								"{{pg-id}}",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create PG Database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"PG Database Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"pgdb-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{org-name}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/postgres/{{pg-id}}/database/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"postgres",
+								"{{pg-id}}",
+								"database",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "start PG Database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"PG Database Start\", function () {",
+									"  pm.expect(pm.response.json().status).to.eql(\"available\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/postgres/{{pg-id}}/database/{{pgdb-id}}/start",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"postgres",
+								"{{pg-id}}",
+								"database",
+								"{{pgdb-id}}",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check PG Database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"PG Database Start\", function () {",
+									"  pm.expect(pm.response.json().status).to.eql(\"available\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/postgres/{{pg-id}}/database/{{pgdb-id}}/check",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"postgres",
+								"{{pg-id}}",
+								"database",
+								"{{pgdb-id}}",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Redis",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Redis Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"rds-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{org-name}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/redis/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"redis",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Main RDS Database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Main RDS Database Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"rdb-main-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"main\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/redis/{{rds-id}}/database/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"redis",
+								"{{rds-id}}",
+								"database",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Cache RDS Database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Main RDS Database Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"rdb-cache-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"cache\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/redis/{{rds-id}}/database/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"redis",
+								"{{rds-id}}",
+								"database",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "start Redis",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Redis Start\", function () {",
+									"  pm.expect(pm.response.json().status).to.eql(\"Running\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/redis/{{rds-id}}/start",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"redis",
+								"{{rds-id}}",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check Redis",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Redis Start\", function () {",
+									"  pm.expect(pm.response.json().status).to.eql(\"Running\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/redis/{{rds-id}}/check",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"redis",
+								"{{rds-id}}",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Ingress",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ingress Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"ing-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{org-name}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/ingress/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"ingress",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "start Ingress",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ingress Start\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/ingress/{{ing-id}}/start",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"ingress",
+								"{{ing-id}}",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check Ingress",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ingress Start\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/ingress/{{ing-id}}/check",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"ingress",
+								"{{ing-id}}",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create NetBox",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"NetBox Creation\", function () {",
+									"  pm.expect(pm.response.json().id).to.exist;",
+									"  pm.globals.set(\"nb-id\", pm.response.json().id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{org-name}}\",\n  \"version\": {\n    \"major\": 3,\n    \"minor\": 4,\n    \"patch\": 7\n  },\n  \"domain\": \"{{domain}}\",\n  \"redis_db\": \"{{rdb-main-id}}\",\n  \"redis_cache_db\": \"{{rdb-cache-id}}\",\n  \"postgres_db\": \"{{pgdb-id}}\",\n  \"ingress\": \"{{ing-id}}\",\n  \"storage\": \"{{stor-id}}\",\n  \"replicas\": 1,\n  \"cpu\": 1000,\n  \"memory\": 2000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/netbox/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"netbox",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "start NetBox",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"NetBox Start\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/netbox/{{nb-id}}/start",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"netbox",
+								"{{nb-id}}",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check NetBox",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"NetBox Start\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/netbox/{{nb-id}}/check",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"netbox",
+								"{{nb-id}}",
+								"check"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete Environment",
+			"item": [
+				{
+					"name": "delete NetBox",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"NetBox Delete\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/netbox/{{nb-id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"netbox",
+								"{{nb-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Ingress",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ingress Delete\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/ingress/{{ing-id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"ingress",
+								"{{ing-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Cache RDS Database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Cache RDS Database Delete\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/redis/{{rds-id}}/database/{{rdb-cache-id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"redis",
+								"{{rds-id}}",
+								"database",
+								"{{rdb-cache-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Main RDS Database",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Main RDS Database Delete\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/redis/{{rds-id}}/database/{{rdb-main-id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"redis",
+								"{{rds-id}}",
+								"database",
+								"{{rdb-main-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Redis",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Redis Delete\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/redis/{{rds-id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"redis",
+								"{{rds-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Postgres",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Postgres Delete\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/postgres/{{pg-id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"postgres",
+								"{{pg-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Storage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Storage Delete\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}/storage/{{stor-id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}",
+								"storage",
+								"{{stor-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Namespace",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Namespace Delete\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/namespace/{{ns-id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"namespace",
+								"{{ns-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Org",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Organization Delete\", function () {",
+									"  pm.expect(pm.response.text()).to.include(\"success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.netboxlabs.com/v2/{{aws-region}}/organization/{{org-id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"netboxlabs",
+								"com"
+							],
+							"path": [
+								"v2",
+								"{{aws-region}}",
+								"organization",
+								"{{org-id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "Bearer eyJraWQiOiJLbkQyMGhMejRJMUJ6K0xDcXl4SElYaWZ6TUNxRFRcL1R1Ukl5RHA5Wm9HZz0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI2MThhYzVmZi1jZTlhLTQ1NDItYmQ2Ny02ZTlkMzMyYjJiMWIiLCJjb2duaXRvOmdyb3VwcyI6WyJuYmxfYWRtaW4iLJ1cy1lYXN0LTFfejcyVEc3NjBEX25ldGJveGxhYnMtZ29vZ2xlIl0sImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy1lYXN0LTEuYW1hem9uYXdzLmNvbVwvdXMtZWFzdC0xX3o3MlRHNzYwRCIsInZlcnNpb24iOjIsImNsaWVudF9pZCI6IjJmbTcwaXZlOXNzZmkzNjljM21pcGpycmZuIiwib3JpZ2luX2p0aSI6ImUwMzIzYzQ4LWJkYmItNGNkMi05NzEzLTkwZTZlNWU1YWU1OSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4gcGhvbmUgb3BlbmlkIHByb2ZpbGUgZW1haWwiLCJhdXRoX3RpbWUiOjE2ODA2MTYwMzksImV4cCI6MTY4MDcyNzI4MSwiaWF0IjoxNjgwNzIzNjgxLCJqdGkiOiI0MGU4Yzk4Yi03NjNlLTQ0NjEtOTQzNC0yYmZkMzU2ZDI2ODEiLCJ1c2VybmFtZSI6Im5ldGJveGxhYnMtZ29vZ2xlX3Jib3VjaGVyQG5ldGJveGxhYnMuY29tIn0.eZvFtAL8YrGUlKGpWlvDHl1Eix9MsEfpN7ZVB6XcHTi4lSDKIf7ivugBsNfOC5C-f4eWUCI1d2O7O-a26QHBeIjiEG6_6_3ojFoFU9nO4tGuNpv0v6xYW_TpvhmGJoCLxP1pF8Lt0aa8N8ABCEzh-4VxYmEBRAQ4X2WNJsWdoIzWRmo8pyL4pFteFiPlF00PiYSQpZOxgi0GrwveDd2qeQNxhMaGMRCBZ0IPtlSAnZ2-hAFRETsWdZjHndTo3JvxRdt25ieOS6Uk9GH3uV8Tbi14oyCqNzRsOhiYlQz6mfxi32UnnXALaf66OcgWvfe4J0J2n5I_mpb1RGdE_kRATA",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "org-name",
+			"value": "Org Name Here",
+			"type": "string"
+		},
+		{
+			"key": "nb_domain",
+			"value": "org_name_here.cloud.netboxapp.com",
+			"type": "string"
+		},
+		{
+			"key": "contact-email",
+			"value": "email@org_name.here",
+			"type": "string"
+		},
+		{
+			"key": "region",
+			"value": "reg-use1v2",
+			"type": "string"
+		},
+		{
+			"key": "aws-region",
+			"value": "us-east-1",
+			"type": "string"
+		},
+		{
+			"key": "nb_major",
+			"value": "3",
+			"type": "string"
+		},
+		{
+			"key": "nb_minor",
+			"value": "4",
+			"type": "string"
+		},
+		{
+			"key": "nb_patch",
+			"value": "7",
+			"type": "string"
+		},
+		{
+			"key": "nb_replicas",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "nb_cpu",
+			"value": "1000",
+			"type": "string"
+		},
+		{
+			"key": "nb_memory",
+			"value": "2000",
+			"type": "string"
+		}
+	]
+}
