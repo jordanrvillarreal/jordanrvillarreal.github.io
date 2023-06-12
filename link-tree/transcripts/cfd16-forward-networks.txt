@@ -1,0 +1,485 @@
+ All right. Uh, I'm Peyman Kasian and, uh, welcome to, uh, this presentation of Forward Network at Cloud Field Day. Today I'm going to talk about use cases of digital twin in multi-cloud and hybrid environment. Uh, I specifically focus on how digital twin can help with, uh, More efficient and more agile operation in these environments.
+
+And also focus a little bit about security use cases of digital twin in these environments. Uh, before I start, uh, a few words about forward. Uh, we are a company with a mission of transforming networks to be more reliable, agile, and secure. We are founded in 2013. Uh, we launched our product toward the end of 2017 in one of the networking field days.
+
+And, uh, just yesterday we announced raising the latest round, round of FI financing, 50 million, uh, that M s D partners sort of, uh, led. Uh, so a very exciting time at forward. The best way to introduce digital twin is by analogy. Who here has used Google Maps within the last couple days? Pretty much everyone, so you have used digital twin, except that Google Map is a digital twin of ward roads and transit routes.
+
+Uh, Google started building this digital twin thing by putting all the static data about how roads are connected and the graph of that connectivity. They added the schedule of all the transit routes on top of that, plus some algorithm that can find how, what's the best way to go from A to B. If you're Dr uh, driving or walking or, uh, sort of doing a hybrid, uh, uh, commute.
+
+Then in order to make the digital twin more useful, they added more live data, uh, things such as, uh, traffic in condition of the roads or. Whether there has been an accident on the road and things of that nature. And then to even improve, uh, the usability and functionality of digital twin, they added peripheral data that things that are not necessarily related to the roads and stuff like that, but are useful when you are on the road like price of gas.
+
+Or, uh, rating of restaurants and hours of, uh, of those restaurants to the point that if I type in, uh, the address of a restaurant will tell me that you are gonna get there before, uh, after the restaurant is closed. So there is no point in going there. What makes, uh, Google Map useful is broad and deep data combined with analysis that they do on top of that data, and then presenting the result of that analysis in user, in useful UIs or through API endpoints.
+
+So the point that. It becomes very useful for all sorts of use cases. Whether I'm doing a simple task like driving to grandma or I'm doing daily commute, or if I'm a more advanced developer. Developing an app like Uber or self-driving, it can take advantage of that data, and the use case is so compelling that there is no going back.
+
+Who here has used the printed maps in the past decade, let's say? No one, right? You have, 
+
+oh my God. I knew it was more for nostalgia. 
+
+ Okay. That makes sense. So, uh, our digital tooling is kind of, uh, similar to that. We, we started by pulling in data config a state from all traditional networking devices like switches and routers and fargos and load balancers.
+
+Then we expanded to SD van and more sort of software defined, uh, elements like N S X. And aci. But then this day and age, everybody has a hybrid environment. Most of the workloads are, uh, are spread between on-premises and cloud. So we expanded into cloud. We started pulling data from all three major clouds, aws, Azure, and and G C P.
+
+And what I mean by pulling data, uh, is. Grabbing information about all the components, all the cloud components and constructs that affect how traffic is being delivered to those, uh, end hosts. Whether it's, uh, subnets and security groups, whether it's transit gateway and V P N Gateway, whether it's V P C endpoints and anything that affect, uh, delivering of traffic.
+
+So that's the starting point. Then we realized in order for the digital tool to be more useful, we have to augment that with other, uh, peripheral data, kind of the same way that Google mapped it. So we started to pull in performance information such as S N M P counters and other, uh, other traffic, uh, measurements.
+
+We integrated some of the security data such as C V E database and result of end host vulnerability scan to the point that if a network operator or a cloud operator is looking at the traffic path, they can immediately see that it's going through a congested area of network. Or if they're looking at an end host, whether it's on cloud or on premises.
+
+They can see, oh, this thing that's exposed to internet has a critical vulnerability. I need to fix that quickly. It's giving context to other types of information that are not specifically, uh, cloud or on-premises. So, uh, just like Google Map, uh, we have broad and deep data. We support, uh, close to, at this point, 30 different vendors, that close to 40 different operating system across these vendors.
+
+This include traditional on-premise vendors and, uh, three major cloud vendors. We support all sort of networking protocols, uh, whether it's, uh, underlay and overlay, tunneling, uh, mechanisms, multi-cast, you name it, plus all the cloud constructs. And we have been deployed at very large enterprise networks with, uh, more than 50,000 on-premise devices.
+
+These are not end host, but actual switches and routers and uh, and uh, devices in the core of the network. And we have been deployed to, uh, environments with more than a thousand cloud projects, accounts and subscriptions. So, broad and deep data is sort of half of this story. The other half is what can you do with that data when you pull that into the digital twin?
+
+And that's where Forward Network is truly unique. We expose our data and result of analysis in two ways. Uh, one of them is called Network Query Engine and QE for short. What it is effectively is a vendor neutral abstraction of the configuration and the state of all the. On-premise, uh, networking devices and cloud elements presented in an open config structure.
+
+We are familiar with open config. So open config is kind of like a industry standard for, uh, switches and routers and fargos and these kind of things that sort of normalize the way that these devices are configured. Uh, such that there is no sort of, uh, vendor dependency. We took that because like we are coming from that networking background and then we expanded that with similar model for cloud, where all the cloud construct and the configuration of them normalize across the three major clouds, such that when you are using that data, you don't have to worry whe whether this is, you know, a security group in a w s or G C P, they're all sort of normalized to the same, uh, format.
+
+And then on top of this data, uh, we have a query language that's gonna have the same flavor as sql, where you can ask that for that data that matches a specific criteria. Let's say that you are a cloud provider and, uh, one of the conditions, uh, do you want to check is, I don't know, like in the route tables.
+
+I don't want to have a route where the next hub of that route is pointing to a down instance because that traffic is going to be dropped or black hole, right? There's a very sane, uh, Sort of sanity condition. So if you want to encode that, you can write this code one time, regardless of what, uh, kind of cloud is sitting on the background.
+
+And we will run it on all the accounts, all the projects, all the subscription, and give you the result. So that's one, uh, one aspect, access to the, uh, raw data that's parts and normalized. The other aspect is, uh, what we have spent a lot of time building and that's computing the path of all possible traffic through this hybrid environment.
+
+What does that mean? If you think about the network, there are several ingress points to that network. At the edge, usually in the data centers or if it's in the cloud, like all the cloud elements, they can pump traffic into this black box that we call, uh, the, the digital, uh, IT infrastructure. For all of those ingress points, we compute all possible ways that traffic can be pumped here.
+
+We pre-compute that, we index that and make that searchable, uh, to users. Why is it important? There are several categories of questions that you can only answer if you have that level of different deep analysis on top of your data. For example, if you want to prove that two sections of the your network, two VPCs are completely isolated or only accessible on a few ports, that's how you can prove that property.
+
+Or if you want to find the blast radius of a. Potentially vulnerable host can do that from that host. He can find out all the places that traffic can go, all the ports that are open and so on. Yes. 
+
+So when you're putting this data together in your, in your query engine here mm-hmm. How end user accessible is that?
+
+So can I put that in front of just. A non-technical security person and they can interact with that? Or do we need to build a construct around this to let them dig in and answer those questions on their own? 
+
+Yes. Uh, that's a very good question. So the data is pretty much browsable. You can browse it through, uh, Through an explorer to see how that data looked like.
+
+And then the syntax of the query language to, to ask questions of that data is very simple. We actually done a lot of user study to come up with this syntax. We were having a few choices whether we should have a Python language, for example, to query this data or use one of the existing languages. What we find out that men is, that many network and cloud operators are not necessarily very comfortable, uh, with, with those, uh, sort of.
+
+Uh, more generic purpose languages. So we build something very simple, uh, that with the help of Id pretty much everyone can, uh, can code up a query against this data. It's of the format of from like, from this data and like you give a path to that data, get this field. And then store it here, compare it to something else, and, you know, come up with a result.
+
+Uh, Craig will show you, uh, in, in the demo an example of how, uh, it'll look like 
+
+maybe I'm, I'm missing something here. Mm-hmm. But if I, you know, start from the data and I build all the, you know, digital twin mm-hmm. 
+
+But the data 
+
+is wrong in the sense that, uh, uh, you know, uh, usually my, my digital wing works perfectly mm-hmm.
+
+While I encounter a bug. In the physical one and I want to test it, how are you able to demonstrate the bag or, you know, find the, the solution for the bag on your digital twin that is based on, on a network that was working at that time or data that was, you know, perfect at the time. So, I, I don't know if I'm clear here.
+
+I mean, just there are glitches in, in that, In the real network. Mm-hmm. And then you have your digital twin, but your digital twin is, is, you know, based on a state that probably is, is perfect. At the time when it was. You know, designed or 
+
+let, let me answer what I understood from your question. So there, there are two aspects to it.
+
+One is that, uh, we are sort of relying on periodic snapshots of your digital infrastructure. So at the time of that snapshot, uh, we build the model based on data, whether it's configuration and state that all these elements of report to us. But there's. And there's always possibility that, uh, you know, the data that, for example, router referred to you, doesn't match what it's actually doing because it has its own sort of internal box.
+
+We won't be able to model those. We primarily focus on, but like we, we assume that if a device says I'm doing this, then it's going to do that. Uh, and if there is mismatch, it's beyond uh, our, uh, our ability. But majority of problems are at the config layer, not, uh, you know, at a device. Uh, issues. 
+
+Um, is this a virtual appliance, physical appliance, or is it a SaaS offering In one of the, Cloud, public cloud.
+
+Yes. Yes. Very good question. So we do have, uh, two different ways to deploy this. Uh, as, as you can imagine, um, we need to, for, for the on-premise pieces, we need to have access to those devices to pull in the data. For cloud, we just need connectivity to internet, to, uh, issue a few API calls. So, uh, You can use our cloud offering, uh, and then deploy a small appliance on your, uh, premises such that it can ship the data back to us.
+
+Uh, or you can just get an on-premise solution deployed in your, uh, premises. Everything are bundled together. Question sir. 
+
+What, what cloud, what cloud do you use for your SaaS offering? 
+
+Uh, we are deployed in a w s. 
+
+Okay, so you mentioned, uh, just the, the connectivity needed to get into the cloud, right?
+
+Mm-hmm. But it, it, it, it has to go a little bit deeper in terms of like what network policies need to be there, uh, what ports need to be open, um, uh, is it anything from a permissions perspective like rback style permissions? Cuz if. Forward needs to talk to Azure, AWS or whatever, any VPC sitting there, it needs a way to get in unless it's a public API and all ports are open and Right.
+
+So I imagine there has to be something specific open for forward to speak to the clouds. 
+
+Uh, yeah. We just use the public APIs that, uh, cloud providers give to us. To, to pull in the data. Of course there's permission aspect to it. Like for every cloud there is different instructions on how to set up a read only account for us, right.
+
+To go and collect this data. One thing that we do for uh, for all these uh, three clouds is ability to discover all the projects and accounts and subscriptions. Cuz many organizations have huge number of them and I don't even know what they have. So, uh, for that we need a little bit more permission to be able to discover them.
+
+Got it. Okay. Makes sense. 
+
+I had a question about, uh, tenancy. So you mentioned, um, briefly about multi-tenancy and about querying all tenants. Mm-hmm. Um, I guess if you're a cloud service provider and you might be managing more than one, End customer. How is it tenanted on your side? So could you query all tenants across your customer base if you were looking for something in particular, or would you need to make multiple queries into kind of each of those tenants, um, to kind of extract that data?
+
+Uh, so multi-tenants, like if you are like as a customer of forward, if you are operating, for example, a multi-tenant data center, then we just need access to those. Switches and routers and stuff like that to get the data out of them and then build the model. We will, we will be able to, for example, switch VFS and get the data from every VF and put, put the data together.
+
+If you're talking about forward, sort of collecting data from public cloud, obviously we don't have access to, uh, to these public clouds like underlying, uh, digital infrastructure. We just use the APIs to get the cloud constructs and use that to, uh, to build the model. And, uh, if you have multiple accounts and multiple projects, we have to switch to every one of them and collect from them and put the data together.
+
+Quick question on the, the, the cloud piece mm-hmm. And how you're storing the data. How long is the data retained within your environment and how is that access or used? 
+
+Yes. That's a very good question. So, uh, it's basically, uh, zipped and encrypted and stored, uh, on a desk somewhere. Okay. Depending on, again, like, uh, what kind of, uh, Deployment you have is on premise, 
+
+let's just say we're doing cloud.
+
+Yeah. It will be stored in, in aw s uh, just, uh, you know, regular files. That data will be safe to files in stored like three or Weber. Yeah. Yeah. Yeah. Okay. E b s. 
+
+How long is the data retained on your end? And can I control on how long you retain my data? 
+
+Yes. There's a retention policy, like we, uh, if for example, you have snapshots every hour from your environment, uh, usually we kind of like the time machine.
+
+Yep. The, the recent one or more of them, and then. They're less as you go back and 
+
+they're using like data lifecycle policies to actually manage the Yeah, exactly. And how long retain, but you're using that, do I configure that? Yes. Within the settings, within the software, yes. 
+
+There are settings, uh, that you can configure for on-premise solutions.
+
+Obviously you have the control. Yeah, how, how much data you can store depend on your availability of storage. 
+
+Gotcha. Thank you. 
+
+Uh, again, uh, I I have a, a big doubt here. I mean, especially around the security 
+
+aspect of all of this. Mm-hmm. I mean, so you, 
+
+you are asking access to, you know, a lot of, uh, devices and parts of the network and public cloud and premises everywhere.
+
+Mm-hmm. And, and. I don't know when, when there is a huge risk that, you know, you have a perfect copy of my data. Mm-hmm. And if somebody access your systems, they have access to everything. 
+
+Uh, first of all, the data, like the, our access to all of these environments are read only, uh, So the words that will happen is you can see that data, uh, in our platform, uh, but then we have several ways to restrict that access.
+
+Uh, we have, uh, you know, different ways for we can, you can integrate basically with the LD a p of your organization in terms of who you give access to. Uh, if you are security concerns and don't want your data to leave, uh, your premises, then we have that on-premise solution for that purpose. Uh, So it sort of depends on the, on the posture of the, of the organization.
+
+Okay. Thank you very much. 
+
+Yeah. All right, so, uh, I mentioned that one half of the digital twin story is what kind of data you have. So the, the more deep and broad your data is, uh, better you can help your customers. Second half is the analysis, uh, that we do on top and, uh, I showed you some examples of some broad and deep analysis that we perform here.
+
+As a result, you have access to complete, accurate and UpToDate model of your digital infrastructure. In order for us to make sure that these models sort of matches the reality, we have over 120,000 tests where we configure different cloud elements or on-premise devices into a specific configuration, bombarded with with packets to make sure we are generating a perfect model.
+
+Uh, we can answer questions very quickly. Stop. Second Query time. You'll see that in the demo. Uh, and because everything is, uh, API accessible, we play nicely with other tools. We have, uh, out of the box integration with Slack and, uh, other tools. Have you ever had a time when. Um, talking about the models, the first point of it where, um, you missed something and maybe the model wasn't correct.
+
+Yeah. That, uh, box happened just like any other software, but, uh, it's not very common. 
+
+One more question on the, on your, your model being up to date, basically. So you're taking those live real time snapshots. Mm-hmm. Is there a. Do you record an intended state versus an operational state? Yes. And saying, okay, well this is how it's supposed to look.
+
+We collect from the device, uh, like in case of device and in the case of cloud, we also have some states that we collect. This is like what the device report in terms of, uh, what state it is in. And we just rely on that to, uh, to model things. We don't, we don't try to sort of emulate what. The device should, the state that the device should be, and then compare it against what it's reporting, right?
+
+Uh, that's a lot more involved to do, but we just rely on what. The devices and clouds, uh, server report to us. 
+
+So then you couldn't take a snapshot and say, well, this is my ideal snapshot and if I have a deviation alert me. You 
+
+can not do that. 
+
+You can do that through, uh, diff across time. So you say like, at this time, and, and Craig will show you, uh, uh, those use cases in the, in the demo, what you can say, this is what I want from my network and if there is any deviation, let me know.
+
+But that's more on an end-to-end level behavior or. You have a golden configuration or golden patterns that you want to follow, you sort of encode that and make sure if there's a deviation from that, uh, you, you report it. Okay. In interest of time, let me make some, uh, progress here. So, uh, here, uh, we have broad and deep data, broad and deep analysis combined together that, uh, create better experience for everyone in the IT infrastructure world.
+
+Uh, we have been, uh, deployed across different teams from security teams to cloud teams and, and network team. Because that's one place that all of these folks can come together, access to a huge amount of data and, uh, solve their problems. So in the rest of the presentation, I am going to show you or, or talk to you about some of these use cases and then back that up with some of the customer deployment stories.
+
+So on the cloud front, the most basic use case is cloud visibility. That's something that everybody need to have. Uh, you have access to live diagrams of how your cloud look like. You can use that to generate a diagram of how the paths on the cloud, uh, look like, and, uh, use that for trained people to troubleshoot stuff.
+
+Uh, it's very basic visibility. Use cases around change management. If you're coming from software development world, the best practice in software development is to define, uh, what the accepted, uh, state of, uh, uh, of your infrastructure going to be After a change, you encode that before, and then once you do the change, you make sure that the state matches that intended, uh, behavior.
+
+That's, uh, sort of test the event development. Uh, using our platform, we can achieve that. Uh, The other aspect is, uh, around auditing and, uh, service assurance. Uh, if you are, uh, someone that has had, that has to deal with day, uh, with yearly audits, you know that audit time is not fun time. Uh, in order to make that, uh, a little bit more smoother, you can encode all the criteria for passing the audit in the form of nqe checks or end-to-end behavior checks and run it throughout the year.
+
+And then at audit time, it's all done. You don't have to do anything. Uh, we have several customers that, uh, sort of use us in that, in that manner. Uh, going to security use cases because we have access to all the device cvs and result of, uh, uh, end host vulnerability scan through integration with third party tools.
+
+We can give you insight in terms of how to prioritize those if you have a critical cv. On a host that's exposed to internet, you wanna fix that sooner than you know, and then host sitting somewhere in the corner of a network. Yes. 
+
+Are you pulling this from like c i s benchmarks or using the national vulnerability database or, uh, so the c the cvs come from, uh, N Database.
+
+Got it. Okay. 
+
+Thank you. Yep. Um, another use case on security is incident for incident response. If you know that this end host seems suspicious, it may be, uh, compromised, can use, uh, forward to immediately find out all the places that an attacker can, can reach to, and all the ports that are open so you can, uh, sort of better protect yourself against, uh, possible attacks.
+
+Is that only visibility and not isolation? You can do both. You can do both. Yeah. So you can, you can see the visibility where it can connect to and communicate with, but you can isolate that host. From a network or no, we don't do the isolation like we are. Not you just visibility only. Okay. Yes. But we can prove isolate.
+
+We can prove that this host is isolated from this other section of the network by, so the work that I do to make the changes to isolate the host. The visibility of you showing that it, it can't touch anything else. That's my proof. Yes. That's your proof. And then in the process of providing that isolation, you can use that visibility to know exactly what firewalls are on the path.
+
+So you go and sort of close them. Gotcha. Uh, another, uh, uh, use cases around generating sort of the security posture matrix when the cells of the matrix shows how different resources can, uh, talk to each other, uh, or, uh, use the path analysis to find out exactly which firewalls need to be punched open for an application, uh, flow to go through.
+
+And I will cover that, uh, in a more detail. Through this, uh, customer story. So this is a story about Goldman Sachs and how they use forward, uh, in their, in their network. There's a talk here by Josh Matthew, who is the, uh, head of, uh, network and security ngs the link here. But essentially the summary of the talk is that Goldman has this, uh, automated zero Trusts network.
+
+Where at the networking layer, everything can talk to everything else, but at the firewall layer, everything is blocked. So whenever an application developer wants to deploy an application and request for a flow, there's a request that comes in that says, I want these connectivities to exist in the network.
+
+Uh, a compliance person, uh, will, uh, do a thumbs up, says that this access is okay. Then forward analyzes the network and find out all the places that, uh, a firewall rule need to change to that, for that traffic to go through. Then an automated software basically goes ahead and push some rules on those firewalls to allow that traffic.
+
+And as a result, the time to deploy an app is under an hour, uh, in this environment. And everything is documented because of the way that access is provision. And this led to, uh, them be able to deploy an application like, uh, uh, apple Card in about three months instead of a year plus. That usually, uh, takes to build such application.
+
+Uh, another example of this is how PayPal is, uh, is using us, and it's kind of similar but slightly different context. So they build a, a chatbot integration for all the app developers when they can come to the chatbot and ask a question like, Hey, chat bott. How do I access from, uh, this application to this IP address, this other application with this IP address and whether they are deployed in cloud or on-premise will show exactly how the path look like and whether the firewall on the path is dropping, uh, the traffic, blocking the traffic or not.
+
+So instead of them sort of, uh, Getting to, uh, IT folks and ask, oh, I can't reach my application. Uh, something on, on the network is, uh, is plugging. They can diagnose whether the problem is in the network layer or elsewhere. And I'm pretty sure for those of you that have done it operation IT folks are the first people that get blame.
+
+In fact, just a couple weeks ago I was on a call with a contractor and they were not able to reach a se, a service that we deployed in the cloud. They were saying, oh, there's a firewall that's blocking it, like without any proof. Just there's a firewall that's block blocking it. It took me less than two minutes to open our application type in the query and showing that, no, the traffic is fine.
+
+Like there is a firewall that's allowing it. There's a security group that's allowing it. The problem is with the application, and after a few minutes of in investigation, he find out that the process that was responsible for capturing the packets on the service side is dead. So it restarted the process.
+
+Everything started to work. So going from potentially days of filing a ticket, To, for the IT team to then go and look into the ticket and, you know, prove innocence for the network. You can do that instantly with such an application. I had a 
+
+question about before you move on, licensing in terms of how the product's licensed, um mm-hmm.
+
+Like is it volume based? What other features are licensable? Cuz you've mentioned a lot of, I guess, end users as well that might be access, uh, accessing it. So is it user based or is it unlimited users, but it's just volume based, so 
+
+Yeah. How does it work pricing wise? Yeah. Very good question. It's, uh, unlimited users.
+
+Uh, the license is based on, uh, network devices. A number of network devices that include in the model. And for cloud elements is something like cloud credit hours based on how many instances you have on the cloud for how many hours, and sort of charge based on that. But, uh, we don't charge on a pair seat or per user basis.
+
+And what about the retention? 
+
+Like you mentioned the retention, um, is configurable if you wanted. Yes. Years with retention. So is it devices plus storage or a retention 
+
+slider? Uh, usually people are, are okay with the default retention policy on the app, and if it's on premise, it's up to them how much, you know, hard, uh, hardware they want to throw at it.
+
+Yes. So, uh, how deep can this go in terms of like, from the application level? So for example, let's say I want to scan like a container network, or I have a Kubernetes cluster and I want to scan the pod network. Can it. Can it look there too for all the traffic going through our containers as well? Yes. It can go as deep as, uh, as needed.
+
+It's, it's whether that kind of container is in the support list of vendors and we are increasingly going closer and closer to the edge. Yeah. Uh, like we do support like Linux, uh, networking stack. Okay. In, in the model, but Got it. Kubernetes is on the roadmap map. It's not supported yet. Oh, okay. Gotcha. Got it.
+
+All right. Uh, next customer story is around, uh, I had Fortune 50, uh, uh, digital entertainment, uh, company that the, the, they decided that the best way to take advantage of the full capabilities of digital twin is by letting people innovate on top of it. So, There's all these, uh, wealth of data. Uh, there's API that you can access.
+
+There's include, can access this data. So they basically organize a hackathon and, uh, 54 people signed up across 13 teams. They developed applications on top that's, uh, reasonable for their use cases. And those application range from finding all the printers in an environment, uh, all the way to having a, a change management window workflow implemented.
+
+Sorry, on top of the, the platform and, uh, finally the, the basic use case of visibility, that's pretty much something that everyone need access to inventory of data access to up to date, uh, uh, map and diagram, to use that for knowledge transfer when the, a new employee come on board, uh, or when they want to troubleshoot something.
+
+Uh, pretty much every, everyone uses, uh, for, for that. Uh, so when you talk about the, um, The computation of all your different network paths. Um, are you able to give recommendations back to a customer based on okay, you could establish resiliency here if you did this, or you could have better optimized traffic flow if you did that.
+
+Are, are you kind of generating those kind of recommendations? Uh, today we don't do that, uh, because every network environment is different. But hopefully using that insight they can, uh, make their own decisions. Mm. Yeah. On. I have a question related to that about everything being different because the, the model, like you're normalizing to a common standard sort of, which is, so you're modeling reality, which all of the different vendors are trying to create solutions to that problem domain.
+
+So it, it, it, you don't quite have the same sort of de normalizing everything or normalizing everything to a lowest common denominator it sounds like. Yes. So, but then you've also got, all the vendors do have these special ways of doing things. All the, like, there's new ones in the details of specific use cases.
+
+So how, how do you reconcile those two aspects? Yes, that's one of the hardest thing about this space. Uh, being able to adapt to all the ways that different vendors implement the same thing. Even like comparing against the standard. Uh, if you look at like under the hood and our model, there are lots of knobs that are very vendor specific.
+
+And like we have to basically capture all those niche behaviors. So yes, we do all of that, but still we normalize that into a vendor agnostic model that has a lot of knobs. 
+
+Um, can you deploy your own models or is there a, um, appetite to allow that in the future around if you had something really bespoke that you needed to do as an 
+
+organization.
+
+Uh, it's really hard to do that, but we are thinking on that direction as well to sort of open up the model to everyone to develop their, uh, their stuff on top. 
+
+So I guess kind of on that development bit right there. Mm-hmm. When I start thinking about this and putting this in the hands of engineers and I start thinking about, okay, automation and C I C D pipelines.
+
+Mm-hmm. Is there a way to model a future state and test that future state and 
+
+verify it? That's on the roadmap. You're working on it? Yes. Okay, cool.
+
+ So I wanna set the stage for exactly what I want to show you in this particular demo. So here I have two companies that I am trying to merge. This is based on a real customer use case, so we're gonna call them old money and new money. So old money is acquiring new money. Old money West Coast based, they actually have presence in all three clouds.
+
+But we're gonna focus on AWS today. Um, lots of on-prem data center components. But just to do the AWS side here, they have done traditional zone based firewalls. That's how they're controlling access policies in their AWS environment. However, new money, they weren't cloud native from day one. They never had any on-prem component, so they've always been AWS native.
+
+The task here is they need to merge within just a few months. Um, Verify the security posture is correct, and it has to be done in a very, very quick timeframe. So fortunately now, I don't know anything about these networks at all, and I'm gonna use forward networks to figure that out. What they have given me though, is they've given me an architecture diagram for both of them.
+
+So, okay, let's take a look. All right. Um, well, let's not very helpful. Um, I see the VPCs there. Um, not sure what a gateway load balance is. I always see the firewalls. Okay. Okay. That's not really helpful. Understanding what this network is like at all. Just kind of shows me the high level transit gateways, things like that.
+
+Well, maybe the, uh, new money one will be a little better. Uh, no, that's, that's even worse. So, okay. AWS network Firewall, I've read about that and I see they're using some kind of inspection VPC to, to manage it. So not knowing anything about this networks, it would take me a really long time to figure this out.
+
+So what I wanna show you is how we can use forward to make this really, really easy. So I'm gonna go ahead and log in to the app over here. So the first thing I see is when I log in, this is the SaaS one actually hosted on AWS marketplace. What I see here is what we've collected from this environment. So when I say collection, we are using native AW S APIs here.
+
+To pull from this account. If I go over to sources, it says, okay, well I've got the two Palos. I'm collecting from those. So using read only credentials, I'm grabbing all the rules, all the flows, all the forwarding tables, everything there, but also I'm collecting from their AWS environment and US West two.
+
+And you can even see, okay, yep, there's the account id. Please don't copy that. And it tells me that I'm collecting from this environment. Okay, great. So what I would need to do there is just tell the platform. Let's just go collect. We call that a snapshot. You can see a whole history of snapshots of everything that's being done.
+
+So this takes just a minute or so to grab all of that data just as fast as we can go out to the API and pull all of it. So what this shows you is when I pull this up, if I look at the dashboard, it's going to tell me, yep, you've got those two Palos there. That's the version it's running, but it's also going to tell me what I've got about the cloud environment.
+
+So it says you've got 14 instances, four VPCs, 14 subnets. In this case no VPN or Direct Connects. You can get as far deep as you want to just to get some visibility of what you've got. Let's look at the inventory shows. All of my e c two instances here, I can actually look at anything I want to. Any of the devices here, but if I just wanna look at the instances, it's got that there.
+
+You can see that snapshot's already ready and complete. So now that I've got this there, the map here shows what I've collected. A W S S West year. If I had more, you'd see a lot more. If I had on-prem, you'd see actual physical data centers. If I click on the US West region here, now it's gonna show me all of my VPCs.
+
+Transit gateways, if I have any internet gateway connectivity, and I can drill down as deep as I want to here to look at all of this. So let's look at, yep. This is a transit gateway here. Let's look at this security vpc. Oh, okay. So it's showing me my internet gateway, all my route tables, what's attached to them here, my availability zones.
+
+I can go as deep as I want to. Now I can say, well, let's just look at all of the resources. Yep. You've got the EC two instance here. I've got. That gateway load balancer that I mentioned. Oh, there's a Nat Gateway too, and actually even the Palo Alto firewall inside this region. So just from a visibility standpoint, I know exactly what I've got here and know exactly what it's, and I can see how it changes over time.
+
+When I go back to the dashboard, you actually see instances how they've changed over time. So let's see if we can figure out something about how the traffic is going. The architecture diagram wasn't a whole lot of help. So I knew those instances right here. So let's do something simple. I know engineers have to deploy to production, so let's see how the traffic goes there.
+
+See if I can make some sense of that. So I'm going to ask the platform something really natural language. I just want to go from that engineering instance and can see it automatic, uh, completes it because it knows what it's got there. Now when I cook plant, it's gonna start to give me results right away because at this point I've asked a very simple, just tell me how I can get from this to, well, I don't know what yet, which is why there's 440, 30 different results.
+
+So very open-ended. Now I can get deeper into it and say, well, now I want to go from that instance, but I also want to go to that production instance. So let's say prod one old money. Okay, so I've asked something very simple. Just tell me how to go from here to here. I don't know anything else but the end points over here, it's gonna show you exactly how it passes through.
+
+Here hop by hop inside aws. I'm gonna show you exactly how the traffic flows, taking into account, all security groups, all network acls, even physical, actually virtual firewalls here. Something that even something like AWS Reachability Analyzer couldn't do because now we're actually analyzing those VN Fs inside the cloud.
+
+So click on the first one right here, tells me, yep, this is the instance that I'm coming from all the ips, everything about that instance, any tags I have from it. The first place I go to is the subnet that it's attached to. Okay, so it tells me the subnet here. Here's what's operating on this subnet. This is the security group you have associated with it.
+
+It's permitting it through. Now, I could have asked ports, protocols, anything more specific if I want to just keep it simple, just connectivity. It shows me my acls being permitted through. Great. The next point here tells me the routing table I'm attached to and the actual route that I'm gonna be operating on.
+
+So there is a default route pointing to this transit gateway, which you can see right here. Now, once I hit the transit gateway, it tells me what route table I'm associated with there, what the attachment point is. Which is going to this security vpc. So this is where it got a little confusing for me because it has that gateway load balancer connecting to the Palo.
+
+So it says, okay, you're hitting that more security groups, more acls, hitting that gateway load balancer here. So how exactly does that work? Okay. I click on that and says, okay, you've got a load balancer here. Load balancing to two different firewalls. And here's the firewall that it goes to. Now there's an interesting view underlay button here.
+
+So it doesn't matter how complex your network is and how many overlays are underlays, we're gonna resolve that down. So how, how does this gateway load balancer connect to this right here? Well, if I look at the config tells me that's a Geneve tunnel. I guess that's how gateway load balancers work in AW s.
+
+If I click on the view underlay, it's gonna tell me, here's how that tunnel actually resolves under the, now of course, we can't get all the way down into how AW s physically does things, but we can see the, the levels of overlay underlay no matter what you've got there as you keep going down. One thing you might have noticed this firewall that it's going to.
+
+Shows this dropped. So right away I know that this traffic will not make it there because I have something that's dropping the traffic. Now, it could have been a security group, it could have been an acl, but it's gonna tell me, well, this firewall. Is dropping the traffic because you have an ACL rule that's blocking it.
+
+I actually show you the ACL rule. I have an engineering to production rule that's dropping this. You can even go all the way into it and say, here's the actual part of the config we're gonna highlight for you. That is doing the traffic drop for you, so you can model very quickly, no matter where it's at, what's being allowed, what's being dropped, just by doing a very, very simple search.
+
+We can also take it to a next level though. I could edit this in my sandbox and actually make changes on a, on a conditional basis to the firewall in the model, and see if the traffic would make it through. Or I could just say, well, you know, let's say I did fix this firewall. What, what else is on in the path that could or could not be a problem?
+
+I turned this button right here, Ron, permit all mode. That's gonna look at the entire path and says, yes, I know that this firewall drops it. Let's just pretend right now that you fixed it. Let's look at the entire path and see if anything else blocks or has issues. In this case, no, everything else looks good.
+
+There's no other security groups, there's no firewalls, nothing else there. So very, very quickly, just by doing this really, really simple search, I will to very show now whether this is on-prem cloud, cloud to cloud, no matter what, you're able to quickly figure this out. I'm, 
+
+I'm asking this and I, I get, this is the whole point, but I just want to hear you say it.
+
+When you, when you hit that permit all button mm-hmm. You virtually hit that permit all button because you're collecting all that data and you're returning back, okay, here's what 
+
+would happen. Here's what would happen. Yep. Exactly right. That's. I have no access to the, the only, the APIs that we pull here, like the IAM permissions or only E C two pulls.
+
+I don't have any action access or anything that could possibly write anything. Why would it say 
+
+permit all and not just the basic what's needed? 
+
+So it's telling me that yes, this is what's needed mean. I can open 'em 
+
+all to any, and they would be great. It would 
+
+all work for me. No, it's telling you what devices you would need to make changes.
+
+So let's say there were four firewalls that you needed to make changes. These are the four different, they all changes, permit 
+
+all only what's. Needed 
+
+only what's, it's not permit, it's not open. Everything that's misleading. It's from a security 
+
+part, 
+
+says permit. You see it? That's fair. Yeah. It's not permit all, but it's telling me.
+
+Okay, so permit, permit, fix 
+
+this rule. All things that are stopping. 
+
+All things that are stopping. Yeah. It's not turning everything up. Yeah. Pass the 
+
+thing. Okay. Yeah. 
+
+All. Is there, uh, anything for like a, uh, like automatic remediation, not actually doing it, but showcasing what you should change, like, like a code change that you were just showing?
+
+Yep. So the next part is what you can take this is you can take this into that kind of remediation change. Okay. So I could save this and put this into what we call an intent check. So I can say any one of those things that need to be working all the time, every time I take a snapshot, every tell me that it's working and.
+
+As I look through time, tell me if it's changed, so I can look at the differences between them and say, okay, under verifications, tell me before I made the change and after I made the change, now you can implement this into Ansible, Terraform Cloud formation, whatever engine you happen to have that will just query us via the A P I and say, before and after, make the change.
+
+Tell me if it's passed or failed. And if it's failed, you can automatically roll that back. But we're not the thing that actually does the configuration. So you, that's the way you would put this into a pipeline that then Yeah, you'd do something like Terra. We already have Ansible. We have potential, we work with Terraform.
+
+We're writing the the modules right now for it. So that's great for doing simple one-off kind of searches there. But I need something a little more holistic from a security perspective. So let's go over to the security tab right here and let's look at the posture. Now the security posture is going to take the zone to zone posture of my entire network and tell me exactly what it looks like.
+
+What I mean by that is if I click on the little pencil icon right here, it's gonna say, I've defined a couple of different zones. Now, zones can be whatever you want there. It could be a collection of subnets and vrf. They could be subnets in the cloud, they could be actual zones on firewalls, whatever they happen to be.
+
+In this case, I'm just taking. The cloud subnets that these different resources live on. So I've said, okay, engineering is these test and prodder these. It's gonna spit out this matrix right here to tell me, coming from this source zone to this destination zone, tell me if things are permitted. Tell me if things are blocked.
+
+So not on a simple one-to-one search basis, but here it says, okay, from N to test, I have complete and open access. But from Inch to Prod, if you remember that search I did, it is completely blocked. So every resource is totally blocked off there, and you can click on that and it'll prove you exactly right.
+
+That, nope, you have a rule here that totally blocks that out. So you can very, very quickly show what's being allowed, what's being denied in through that environment. But let's say you did want to do it on a more point basis. Well, let's look at the blast radius here. I can type in any end host ip, any IP address I know about on the network.
+
+Let's just do that one again.
+
+It's gonna tell me, okay, that's where it's located at here is every possible port protocol source, destination, ip, even app IDs, if you have those configured that it's going to access. So this IP address that I put in can access all of these destination IP addresses on all of these ports and protocols.
+
+And of course you can download this and give this to anybody so that if you have. A breach or something that's just a little suspect, you know, right away every place that that thing could possibly reach. So you can verify what the posture happens to be. So this helps me right away figure out, okay, this is what the network looks like.
+
+Here's how the traffic flow. Is it performing as I need to? So I didn't know anything about this network and just by doing some simple searches from what we've collected, I have a good idea of how the traffic is moving and how it's flowing. So let's take the other part. Let's take that new money environment.
+
+So similar sort of stuff I'm collecting there you see a similar sort of setup, but it's not using, uh, Palo Alto's, it's using AWS network firewall, so it's completely native. However, I can do the exact same things there no. I've got the, I've got all of my inventory here, all of my instances here. I can do those exact same searches and tell me how this traffic flows here.
+
+So if I do something similar there from Ang one new money to, let's say, prod one new money.
+
+Now I can see how it froze slows here. But instead of hitting actual firewalls, it's hitting AWS network, firewall and all the rules that are associated with it. So no matter how you segment your traffic, how you set up your network, we don't prescribe any particular way. How your network should be engineered.
+
+We're just reflecting what you have and making it very, very quick and simple to show you everything you have here, all the same features are there, all the vulnerabilities, all the blast radius, even the security postures. And in this case, I actually have some partial level of access, so some zones have some access between different ones.
+
+So let's take this and merge 'em together. How do I do that? Well, all I really have to do is go over to my sources. Collect those Palos here and then collect both of those networks in both of those regions. Now when I do that, now when I look on the map, you see I have a line between US West and US east.
+
+I can click on that, see that same bit of information I had before. But now I see a peering relationship between there. So they've peered the transit gateway from west to Easter. So I see that peering across regions. Going back to my dashboard, you see a bunch more instances here. The old money and the new one, money ones right there.
+
+So let's do some of those searches again and see exactly what's going on. So let's say I'm coming from, let's say something on old money, and let's say I'm s. And different engineering on new money.
+
+So it's gonna show me those exact same path searches. This one looks familiar going through that gateway load balancer. But now it shows me the peering relationship between them, and it shows me that I have connectivity between both of those regions there. Same exact thing I did before, just by adding them together.
+
+Now I know that the traffic is flowing between these two regions. So you made the change with your applications? No, I don't. So the, I, I made the change in AWS and the application. Just picked that up. Yeah. We don't make any changes. Yeah. Yeah, I went to, yeah, went over to AWS and, and checked it out there.
+
+Same thing with the security posture. Now I can see between both of these environments is the security posture correct. In this case, I don't want anyone from new money pushing to production, so I know that there are rules blocking anyone from there, pushing to my production environment. Same rules that I had before from engine prod aren't allowed there, so I can give you that same level of security, uh, uh, assurance.
+
+However, I've got some more things that I need to make sure of. So in this case, merging together. I have some c i s benchmarks I need to verify that are on the environment. So I'm gonna go take a look at the network query engine to see how that works. Uh, just, just before you jump into that section, small point.
+
+Sure. Um, does this go down to the level of granularity of post firewalls? Yeah, if you, if um, depending on the device, yeah, we can, we can go into and, you know, pull IP tables and things like that from Linux host. Yeah. 
+
+Assuming that's a client that has to be installed 
+
+or you're just s ssh Yeah. S yeah. We don't do any agents or, except for the initial collector, everything we do is either a API or ssh, depending on low common.
+
+We would need to 
+
+configure that for each host. If 
+
+you wanted to get down to the configure 
+
+within the application for a global. 
+
+Global key. Yeah. We have, we have, we have discovery and scanning to find things on there so you don't have to have a good list. We can see, we can look at C D P, ldp, we can do scans.
+
+We just log in and figure those things out. Yeah. So integrating with other sources like I showed you here, whether it is the NIST database, looking at the larger network, I can see all of the CVE vulnerabilities. This is based on knowing the config and state, but also looking to see if I have any configurations that match those particular CVEs.
+
+But if I want to do that, Um, do the CIS benchmarks. Let's look at my network query engine here. So I'm gonna go over to aws, actually just do cloud. So I've got these turned on looking at routes within invalid. Next top what mentioned, see if they have default security groups. Make sure that's restricting things.
+
+See if I have unfettered s SSH access, and RDP access. So that one here shows us failed. So what I've got here is I've got something that is allowing unfettered s ssh. I can click on failed here, and this is where you can see the code of it. So this is the network query engine language right here. Now this is a very simple sequel like language.
+
+I can even look at the entire query here and tell you exactly what that, here's the entire data model. You could make changes to it. These are just cis benchmarks that we have built in already because we found 'em useful. But if you needed to do something yourself, that would be pretty easy to do, showing you exactly how that's done.
+
+So in this case I have, it shows up as failed here. So what does that mean? Let's look at violations. True. So it's telling me that I have a particular something on my, looks like my firewalls here are allowing s ssh. From a 0 0 0, that's against the CIS policy. You can see that over in the code right here, CIS Benchmark 4.1.
+
+It's not along that. So I need to remediate that. Well, I know exactly where it is. I'm looking in the entire environment because it's showing me exactly what's going on. So here's the security group. Sg, zero ae. Okay, quick question. 
+
+Yep. Is that able to click on it and open up the exact AWS account? Rather than me going to the aws like, take me directly to the security group or do I need to search it?
+
+You? 
+
+Yeah. This will tell you where it is, but yeah, you do need to search it. Yeah, we do have some things that are coming to actually click and show you that, but uh, to pull it up, whether it's SSH to a device, something like that, that's not implemented just yet. But yeah, that's something that we're, we're considering.
+
+I just think it's easier if you were able to click on that security, open it up, it opens it up, and I can change it right away. Now I have to go find out what account that is and log into it and find the rule. 
+
+Well, we're gonna tell you what a account it is, so we know what a account. But yeah, having a, a clickable way, that would make a lot easier.
+
+So SG zero ae, okay. Let's just go find it. There it is. And yep. What do you know It's allowing. Zero. Zero, zero. So let's, let's fix this. So let's edit the inbound rule. So I know my collector is coming from that IP address, which is probably good. I have all sorts of people trying to SSH into this instance all the time, so probably good to not have it open up to SSH out to the internet.
+
+So let's just go ahead and correct that There. Let's say coming from, let's just put in. Slash 32, save the rule. Okay, that's fixed. Let's take a new snapshot. So now we're going to compare between these two and see one that I fixed this problem, and two, is it, did it mess anything else up in the network? So it's gonna go ahead and collect that.
+
+It's going out to aws, it's going out to the firewall rules. Okay. You see it's pulling all that up. Quick question. Yep. J just to confirm, to be able to see the data, it has to go out and pull it. This is not realtime. It's not realtime. Got it. No. Okay. It can be triggered by things, so it can be triggered by something, an API call for.
+
+Yep. Or it can be part of that work, that pipeline workflow to trigger us. But yes, it's not, it's not a realtime engine. Got it. How, as part of the remediation of, you know, seeing that you know this, the connectivity is there and you want to stop it, would it be an option? Or you guys thought of, uh, making basically a, this is the code to fix it in, in the tool.
+
+So you literally copy that. Throw it into the seal. Yeah. Having those kind of suggestions. Yeah. That's actually one of the hack weeks that we worked on was to actually have, here's the suggestion of what you, we don't think we're gonna do the, we're the configurator, but here's, but here's, here's the, here's what you should do.
+
+Yeah. Go inspect. Yeah. You can already make some firewall changes and do what you have there, but yeah, this is gonna show you that too. Okay, so let's go look at that again. Now if I go over to cloud, oh, that shows up as past, and I can even say, well, exactly. What did I change? Yep. I change that ACL right there, and if I go over to verifications, You can see this failed before and now it's passed.
+
+So now I know I've remediated. I know it's always remediated and fixed, and I know there's no other problems that I have in any of these intent verifi. So this runs every time I take a snapshot, like you meant, like I showed you here, snapshots goes far back as you need to based on our retention policy.
+
+The idea being is that this is very simple. You pull the data, it shows you what you've got. You ask simple things. You don't have to be an expert on aws. I only started, you know, cloud stuff about two years ago, and using this made me a much better cloud engineer because when I configured something wrong or didn't, I could really, really quickly say, oh, I didn't attach this route table.
+
+I didn't do this peer incorrectly. It's very, very easy to figure that out about networks. You know nothing about. I had a question 
+
+about the, the queries. 
+
+Mm-hmm. Um, what flexibility do you have within 
+
+that scripting language? Can it. Make an HT d p call externally to pull down a list of ips that might be allowed or, yep.
+
+Something like that. Or is it only really able to query the data 
+
+that's within the system? No, so part of what we've been doing the past, I suppose, a year and a half, is integrating those external sources, whether it is an, an API list from a, you know, a C m CMDB or from maybe an end of life and a support list from a Cisco or a Juniper or something.
+
+Just a flat file you have listed there that has those IP addresses. Using that query language, we can import that in there and then, It's available to query basically in the data model, so, absolutely. 
+
+And could we push data in programmatically? Or is it really a configured data 
+
+source and pull data? It's a, it's a configured data source and pull, but it pulls every time we take a snapshot.
+
+So whenever you make a change, it could be triggered. How do I control access for people logging into forward? So for example, if I got five engineers on my team Yeah. And I only want them to be able to see things that are coming from this account or. This VPC or whatever the case may be. Is there, is there a way to get granular like that?
+
+Oh, of course. Yeah. Yeah. So there's, there's an RBACK model of Okay. Per network or even within the network. Oh, like I said, we already strip out things like sensitive things, like I said, in P strings and things that we don't need for modeling. Sure. But yeah, you can strip it down even further. Say you can only do a path search, but you can't actually look at the firewalls or you can't look at the CVEs.
+
+Cause maybe I don't want that broadcast to everybody. All the vulnerabilities I have on my network. So, absolutely. Thank you. Could you run this in like an MSP model where, As a provider, you're managing the environment for 30 or 40 bulk smaller companies. A hundred percent. We didn't, we have customers that do that all the time.
+
+Each one would be a different network. You as the MSP would have access to all of them, and then your customers can only access their own network. Interesting. Okay. Do you have different, um, roles for like, uh, Security networking. Like if you're an auditor and you just want to be able to get in and view reports and see specific things, but not be able to get to like the network mappings and all the devices that are in there, are you able to segment that?
+
+Yeah. Yeah. So it, the idea being, yeah, if you're a security person, you would only have access to maybe seeing the posture. Putting in things to the blast radius. Of course, everything you see here is completely API accessible. We have a, a full, uh, swagger model. You can see exactly what's going on, so you could even restrict it even further just by putting a front into it.
+
+Mm-hmm. Like several of our customers don't e like, I love our ui, but several, our customers don't even use it. Is there any canned reports as far as compliance 
+
+goes where you could spit out, you know, 
+
+I'm doing like HIPAA compliance check or 
+
+other sorts of things where 
+
+you could just spit that out? Oh yeah, we have, we have Stig reports already written.
+
+We have some HIPAA ones, the CIS ones I showed you right there. So yeah, these are ones that we've seen that are just useful. You know that because we have a lot of customers that, that have to do stick checks all the time and they don't wanna be auditing. So yeah, we have a lot of these. Cam ones and we'll, we'll, he, we help you write 'em cuz it's not a difficult language, but we obviously have more experience and if we find something useful, we put it in the library.
+
+So these are already directly there in the product and we're working on building a community around actually, you know, sharing these between different customers, things like that. That's in the works right now though. Hmm.
