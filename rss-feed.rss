@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="https://feeds.buzzsprout.com/styles.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:psc="http://podlove.org/simple-chapters" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <atom:link href="https://feeds.buzzsprout.com/2127872.rss" rel="self" type="application/rss+xml" />
+    <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" xmlns="http://www.w3.org/2005/Atom" />
+    <title>The Art of Network Engineering</title>
+    <lastBuildDate>Wed, 26 Feb 2025 06:05:12 -0500</lastBuildDate>
+    <link>https://artofnetworkengineering.com</link>
+    <language>en</language>
+    <copyright>© 2025 The Art of Network Engineering</copyright>
+    <podcast:locked>yes</podcast:locked>
+    <podcast:guid>8e5acb2c-c7f8-58b7-848a-102c5cbecde7</podcast:guid>
+    <podcast:txt purpose="verify">artofnetworkengineering@gmail.com</podcast:txt>
+    <podcast:podroll>
+      <podcast:remoteItem feedGuid="abb78b54-2514-5ff8-a111-a83626a55f83" feedUrl="https://feeds.buzzsprout.com/2129055.rss" />
+      <podcast:remoteItem feedGuid="b203b6df-4b0b-53ee-87c7-7d36ee4105a0" feedUrl="https://feeds.packetpushers.net/PacketPushersWeeklyPodcast" />
+      <podcast:remoteItem feedGuid="f2ea28a5-7233-5090-a3ac-eff4efcd26ee" feedUrl="https://feeds.packetpushers.net/TheNetworkBreak/" />
+    </podcast:podroll>
+    <itunes:author>Andy and friends</itunes:author>
+    <itunes:type>episodic</itunes:type>
+    <itunes:explicit>false</itunes:explicit>
+    <description><![CDATA[<p>Join us as we explore the world of Network Engineering! In each episode, we explore new topics, talk about technology, and interview people in our industry. We peek behind the curtain and get insights into what it's like being a network engineer - and spoiler alert - it's different for everyone!&nbsp;<br><br>For more information check out our website https://artofnetworkengineering.com | Be sure to follow us on Twitter and Instagram as well @artofneteng | Co-Host Twitter Handle: Andy @andylapteff&nbsp;</p>]]></description>
+    <generator>Buzzsprout (https://www.buzzsprout.com)</generator>
+    <itunes:keywords>networking, network engineering, cisco, cloud, it, certification, studying, juniper</itunes:keywords>
+    <itunes:owner>
+      <itunes:name>Andy and friends</itunes:name>
+      <itunes:email>artofnetworkengineering@gmail.com</itunes:email>
+    </itunes:owner>
+    <image>
+       <url>https://storage.buzzsprout.com/4ecy5zvgwfainqs76ts10q6536st?.jpg</url>
+       <title>The Art of Network Engineering</title>
+       <link>https://artofnetworkengineering.com</link>
+    </image>
+    <itunes:image href="https://storage.buzzsprout.com/4ecy5zvgwfainqs76ts10q6536st?.jpg" />
+    <itunes:category text="Technology" />
+    <itunes:category text="Business">
+      <itunes:category text="Careers" />
+    </itunes:category>
+    <itunes:category text="News">
+      <itunes:category text="Tech News" />
+    </itunes:category>
+    <podcast:person role="host" href="https://www.permitipandyandy.com/" img="https://storage.buzzsprout.com/7lbse0s1xgdcc1icfqmda6cn4b9d">Andy Lapteff</podcast:person>
+
+    <!-- Episode 1 -->
+    <item>
+      <itunes:title>Making Ethernet Cool Again—The Ultra Ethernet Consortium</itunes:title>
+      <title>Making Ethernet Cool Again—The Ultra Ethernet Consortium</title>
+      <itunes:summary><![CDATA[Send us a text With the rise of artificial intelligence and its significant demands on network performance, experts are increasingly asking whether Ethernet can catch up to InfiniBand as the preferred choice for high-performance computing.  Join us as industry veterans Mike Bushong and Dr. Jay Metz share their insights on the necessity of open, flexible, and scalable networking solutions. Discover why many believe that Ethernet could be the platform of choice moving forward. As they dissect t...]]></itunes:summary>
+      <description><![CDATA[<p><a target="_blank" href="https://www.buzzsprout.com/twilio/text_messages/2127872/open_sms">Send us a text</a></p><p>With the rise of artificial intelligence and its significant demands on network performance, experts are increasingly asking whether Ethernet can catch up to InfiniBand as the preferred choice for high-performance computing.<br/><br/>Join us as industry veterans Mike Bushong and Dr. Jay Metz share their insights on the necessity of open, flexible, and scalable networking solutions. Discover why many believe that Ethernet could be the platform of choice moving forward. As they dissect the need for innovation, collaboration, and competition within the ecosystem, our guests provide a forward-looking perspective on the future of network engineering.<br/><br/>This engaging discussion ultimately encourages listeners to rethink their understanding of Ethernet&apos;s potential, examining the increased complexity required to meet the evolving demands of modern computational tasks like AI and HPC. </p><p>For more details about what the work UEC is doing, go to https://ultraethernet.org/<br/><br/></p><p>Find everything AONE right here: <a href='https://linktr.ee/artofneteng'>https://linktr.ee/artofneteng</a></p>]]></description>
+      <content:encoded><![CDATA[<p><a target="_blank" href="https://www.buzzsprout.com/twilio/text_messages/2127872/open_sms">Send us a text</a></p><p>With the rise of artificial intelligence and its significant demands on network performance, experts are increasingly asking whether Ethernet can catch up to InfiniBand as the preferred choice for high-performance computing.<br/><br/>Join us as industry veterans Mike Bushong and Dr. Jay Metz share their insights on the necessity of open, flexible, and scalable networking solutions. Discover why many believe that Ethernet could be the platform of choice moving forward. As they dissect the need for innovation, collaboration, and competition within the ecosystem, our guests provide a forward-looking perspective on the future of network engineering.<br/><br/>This engaging discussion ultimately encourages listeners to rethink their understanding of Ethernet&apos;s potential, examining the increased complexity required to meet the evolving demands of modern computational tasks like AI and HPC. </p><p>For more details about what the work UEC is doing, go to https://ultraethernet.org/<br/><br/></p><p>Find everything AONE right here: <a href='https://linktr.ee/artofneteng'>https://linktr.ee/artofneteng</a></p>]]></content:encoded>
+      <itunes:author>Andy and friends</itunes:author>
+      <enclosure url="https://www.buzzsprout.com/2127872/episodes/16692611-making-ethernet-cool-again-the-ultra-ethernet-consortium.mp3" length="44151675" type="audio/mpeg" />
+      <guid isPermaLink="false">Buzzsprout-16692611</guid>
+      <pubDate>Wed, 26 Feb 2025 06:00:00 -0500</pubDate>
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16692611/transcript" type="text/html" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16692611/transcript.json" type="application/json" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16692611/transcript.srt" type="application/x-subrip" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16692611/transcript.vtt" type="text/vtt" />
+      <podcast:chapters url="https://www.buzzsprout.com/2127872/16692611/chapters.json" type="application/json" />
+      <psc:chapters>
+        <psc:chapter start="0:00" title="Making Ethernet Cool Again—The Ultra Ethernet Consortium" />
+        <psc:chapter start="0:04" title="Introduction to the Art of Network Engineering" />
+        <psc:chapter start="5:31" title="Insights on Scaling Networks for AI Workloads" />
+        <psc:chapter start="16:45" title="Exploring the Standards: InfiniBand vs. Ethernet" />
+        <psc:chapter start="1:12:05" title="Discussion with Experts Mike Bouchon and Jay Metz" />
+        <psc:chapter start="2:18:00" title="Networks for AI: Scale Up vs. Scale Out" />
+        <psc:chapter start="4:06:15" title="Challenges and Opportunities in AI Networking" />
+        <psc:chapter start="8:34:13" title="The Evolution of Ethernet for AI Workloads" />
+        <psc:chapter start="11:30:40" title="The UEC: Vision and Goals for Ethernet" />
+        <psc:chapter start="12:34:32" title="A Look Ahead: What Comes Next for Networking?" />
+      </psc:chapters>
+      <itunes:duration>3677</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <podcast:person role="guest" href="https://www.linkedin.com/in/jmetz/" img="https://storage.buzzsprout.com/wv0v7pqqusao9jdw1cexjqz4nvfx">J Metz</podcast:person>
+      <podcast:person role="guest" href="https://www.linkedin.com/in/michaelbushong/" img="https://storage.buzzsprout.com/mpchi59lpuf7irv560tsmvlhrq16">Mike Bushong</podcast:person>
+      <podcast:person role="host" href="https://www.permitipandyandy.com/" img="https://storage.buzzsprout.com/7lbse0s1xgdcc1icfqmda6cn4b9d">Andy Lapteff</podcast:person>
+    </item>
+
+    <!-- Episode 2 -->
+    <item>
+      <itunes:title>(PA)NUG Podcast Panel - October 2024</itunes:title>
+      <title>(PA)NUG Podcast Panel - October 2024</title>
+      <itunes:summary><![CDATA[Send us a text The (PA)NUG podcast panel of William Collins, Andy Lapteff, Ned Bellavance, and Drew Conry-Murray highlights the evolving landscape of network engineering, focusing on the essential skills required for future success, including automation and cloud technologies. Panelists emphasize the importance of foundational networking knowledge, mentorship, and the integration of security into network design, while also addressing the challenges and opportunities presented by technological...]]></itunes:summary>
+      <description><![CDATA[<p><a target="_blank" href="https://www.buzzsprout.com/twilio/text_messages/2127872/open_sms">Send us a text</a></p><p>The (PA)NUG podcast panel of William Collins, Andy Lapteff, Ned Bellavance, and Drew Conry-Murray highlights the evolving landscape of network engineering, focusing on the essential skills required for future success, including automation and cloud technologies. Panelists emphasize the importance of foundational networking knowledge, mentorship, and the integration of security into network design, while also addressing the challenges and opportunities presented by technological advancements.<br/><br/>• Exploration of the changing network engineering landscape <br/>• Emphasis on the importance of automation and scripting skills <br/>• Discussion on retaining fundamental knowledge in networking <br/>• Insights on securing networks within cloud infrastructure <br/>• Importance of mentorship and continuous learning <br/>• Perspectives on the future of AI in network engineering<br/><br/>Join the (US)NUA today:<br/>https://www.usnua.com/membership</p><p>Find everything AONE right here: <a href='https://linktr.ee/artofneteng'>https://linktr.ee/artofneteng</a></p>]]></description>
+      <content:encoded><![CDATA[<p><a target="_blank" href="https://www.buzzsprout.com/twilio/text_messages/2127872/open_sms">Send us a text</a></p><p>The (PA)NUG podcast panel of William Collins, Andy Lapteff, Ned Bellavance, and Drew Conry-Murray highlights the evolving landscape of network engineering, focusing on the essential skills required for future success, including automation and cloud technologies. Panelists emphasize the importance of foundational networking knowledge, mentorship, and the integration of security into network design, while also addressing the challenges and opportunities presented by technological advancements.<br/><br/>• Exploration of the changing network engineering landscape <br/>• Emphasis on the importance of automation and scripting skills <br/>• Discussion on retaining fundamental knowledge in networking <br/>• Insights on securing networks within cloud infrastructure <br/>• Importance of mentorship and continuous learning <br/>• Perspectives on the future of AI in network engineering<br/><br/>Join the (US)NUA today:<br/>https://www.usnua.com/membership</p><p>Find everything AONE right here: <a href='https://linktr.ee/artofneteng'>https://linktr.ee/artofneteng</a></p>]]></content:encoded>
+      <itunes:author>Andy and friends</itunes:author>
+      <enclosure url="https://www.buzzsprout.com/2127872/episodes/16608112-pa-nug-podcast-panel-october-2024.mp3" length="34812000" type="audio/mpeg" />
+      <guid isPermaLink="false">Buzzsprout-16608112</guid>
+      <pubDate>Wed, 12 Feb 2025 06:00:00 -0500</pubDate>
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16608112/transcript" type="text/html" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16608112/transcript.json" type="application/json" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16608112/transcript.srt" type="application/x-subrip" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16608112/transcript.vtt" type="text/vtt" />
+      <podcast:chapters url="https://www.buzzsprout.com/2127872/16608112/chapters.json" type="application/json" />
+      <psc:chapters>
+        <psc:chapter start="0:00" title="(PA)NUG Podcast Panel - October 2024" />
+        <psc:chapter start="0:01" title="USNUA Podcast Panel" />
+        <psc:chapter start="11:08" title="Evolution of Networking in Automation" />
+        <psc:chapter start="23:15" title="Adapting to Networking Evolution" />
+        <psc:chapter start="30:19" title="Future Network Engineer Pipeline" />
+        <psc:chapter start="33:29" title="Future of Networking Engineering Profession" />
+        <psc:chapter start="40:11" title="Future of Networking and Technology" />
+        <psc:chapter start="47:16" title="Effective Use of GPT Chat" />
+      </psc:chapters>
+      <itunes:duration>2899</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <podcast:person role="guest" href="https://www.linkedin.com/in/william-collins/" img="https://storage.buzzsprout.com/xsb1yxkvr4irbqvbvb8367lt9z85">William Collins</podcast:person>
+      <podcast:person role="host" href="https://www.permitipandyandy.com/" img="https://storage.buzzsprout.com/7lbse0s1xgdcc1icfqmda6cn4b9d">Andy Lapteff</podcast:person>
+    </item>
+
+    <!-- Episode 3 -->
+    <item>
+      <itunes:title>Reload in 10</itunes:title>
+      <title>Reload in 10</title>
+      <itunes:summary><![CDATA[Send us a text This episode explores the theme of change, drawing on personal anecdotes from the hosts as they navigate transitions in their careers and lives. The discussion highlights the importance of embracing change and automation in the ever-evolving tech industry, fostering resilience, and nurturing community connections.  • Reflections on personal experiences of change  • The evolution of the podcast amidst transitions  • Importance of automation in today’s networking landsc...]]></itunes:summary>
+      <description><![CDATA[<p><a target="_blank" href="https://www.buzzsprout.com/twilio/text_messages/2127872/open_sms">Send us a text</a></p><p>This episode explores the theme of change, drawing on personal anecdotes from the hosts as they navigate transitions in their careers and lives. The discussion highlights the importance of embracing change and automation in the ever-evolving tech industry, fostering resilience, and nurturing community connections.<br/><br/>• Reflections on personal experiences of change <br/>• The evolution of the podcast amidst transitions <br/>• Importance of automation in today’s networking landscape <br/>• Navigating the emotional impacts of career changes <br/>• Suggestions for leveraging community for support and growth <br/>• Embracing vulnerability and creativity in facing fears </p><p>Find everything AONE right here: <a href='https://linktr.ee/artofneteng'>https://linktr.ee/artofneteng</a></p>]]></description>
+      <content:encoded><![CDATA[<p><a target="_blank" href="https://www.buzzsprout.com/twilio/text_messages/2127872/open_sms">Send us a text</a></p><p>This episode explores the theme of change, drawing on personal anecdotes from the hosts as they navigate transitions in their careers and lives. The discussion highlights the importance of embracing change and automation in the ever-evolving tech industry, fostering resilience, and nurturing community connections.<br/><br/>• Reflections on personal experiences of change <br/>• The evolution of the podcast amidst transitions <br/>• Importance of automation in today’s networking landscape <br/>• Navigating the emotional impacts of career changes <br/>• Suggestions for leveraging community for support and growth <br/>• Embracing vulnerability and creativity in facing fears </p><p>Find everything AONE right here: <a href='https://linktr.ee/artofneteng'>https://linktr.ee/artofneteng</a></p>]]></content:encoded>
+      <itunes:author>Andy and friends</itunes:author>
+      <enclosure url="https://www.buzzsprout.com/2127872/episodes/16524796-reload-in-10.mp3" length="43074649" type="audio/mpeg" />
+      <guid isPermaLink="false">Buzzsprout-16524796</guid>
+      <pubDate>Wed, 29 Jan 2025 06:00:00 -0500</pubDate>
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16524796/transcript" type="text/html" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16524796/transcript.json" type="application/json" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16524796/transcript.srt" type="application/x-subrip" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16524796/transcript.vtt" type="text/vtt" />
+      <podcast:chapters url="https://www.buzzsprout.com/2127872/16524796/chapters.json" type="application/json" />
+      <psc:chapters>
+        <psc:chapter start="0:00" title="Navigating Change in Network Engineering" />
+        <psc:chapter start="7:07" title="Evolution of Network Engineering Podcast" />
+        <psc:chapter start="17:32" title="Importance of Linux and Whiteboarding" />
+        <psc:chapter start="28:26" title="Navigating Network Engineering and Cloud Adoption" />
+        <psc:chapter start="33:30" title="Learning and Implementing Network Automation" />
+        <psc:chapter start="40:32" title="Embracing Change and Infrastructure Automation" />
+        <psc:chapter start="46:21" title="Overcoming Adversity and Finding Happiness" />
+        <psc:chapter start="52:40" title="Navigating Family, Career, and Change" />
+      </psc:chapters>
+      <itunes:duration>3588</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <podcast:person role="guest" href="https://www.linkedin.com/in/jeff-clark-5492307/" img="https://storage.buzzsprout.com/zvff90ooxc8qhernp82buaersajr">Jeff Clark</podcast:person>
+      <podcast:person role="guest" href="https://www.linkedin.com/in/william-collins/" img="https://storage.buzzsprout.com/xsb1yxkvr4irbqvbvb8367lt9z85">William Collins</podcast:person>
+      <podcast:person role="host" href="https://www.permitipandyandy.com/" img="https://storage.buzzsprout.com/7lbse0s1xgdcc1icfqmda6cn4b9d">Andy Lapteff</podcast:person>
+    </item>
+
+    <!-- Episode 4 -->
+    <item>
+      <itunes:title>Bytes and Books: EVPN VXLAN, with author Aninda Chatterjee</itunes:title>
+      <title>Bytes and Books: EVPN VXLAN, with author Aninda Chatterjee</title>
+      <itunes:summary><![CDATA[Send us a text This episode discusses the complexities of VXLAN and EVPN in modern networking, highlighting the transition from traditional layer 2 designs to more efficient layer 3 systems. With insights from expert Aninda Chaterjee, listeners learn the importance of understanding underlying technologies for effective network management.   • Personal experiences with home lab setups and troubleshooting  • Explanation of VXLAN as a data plane encapsulation method  • Challenges ...]]></itunes:summary>
+      <description><![CDATA[<p><a target="_blank" href="https://www.buzzsprout.com/twilio/text_messages/2127872/open_sms">Send us a text</a></p><p>This episode discusses the complexities of VXLAN and EVPN in modern networking, highlighting the transition from traditional layer 2 designs to more efficient layer 3 systems. With insights from expert Aninda Chatterjee, listeners learn the importance of understanding underlying technologies for effective network management. <br/><br/>• Personal experiences with home lab setups and troubleshooting <br/>• Explanation of VXLAN as a data plane encapsulation method <br/>• Challenges faced in traditional data center architectures <br/>• Transitioning from layer 2 to layer 3 using leaf and spine architectures <br/>• How EVPN enhances VXLAN functionality by managing MAC addresses <br/>• Importance of understanding technology for effective troubleshooting <br/>• Aninda’s insights on becoming a technical author in the networking field</p><p>Find everything AONE right here: <a href='https://linktr.ee/artofneteng'>https://linktr.ee/artofneteng</a></p>]]></description>
+      <content:encoded><![CDATA[<p><a target="_blank" href="https://www.buzzsprout.com/twilio/text_messages/2127872/open_sms">Send us a text</a></p><p>This episode discusses the complexities of VXLAN and EVPN in modern networking, highlighting the transition from traditional layer 2 designs to more efficient layer 3 systems. With insights from expert Aninda Chatterjee, listeners learn the importance of understanding underlying technologies for effective network management. <br/><br/>• Personal experiences with home lab setups and troubleshooting <br/>• Explanation of VXLAN as a data plane encapsulation method <br/>• Challenges faced in traditional data center architectures <br/>• Transitioning from layer 2 to layer 3 using leaf and spine architectures <br/>• How EVPN enhances VXLAN functionality by managing MAC addresses <br/>• Importance of understanding technology for effective troubleshooting <br/>• Aninda’s insights on becoming a technical author in the networking field</p><p>Find everything AONE right here: <a href='https://linktr.ee/artofneteng'>https://linktr.ee/artofneteng</a></p>]]></content:encoded>
+      <itunes:author>A.J. and Andy</itunes:author>
+      <enclosure url="https://www.buzzsprout.com/2127872/episodes/16440266-bytes-and-books-evpn-vxlan-with-author-aninda-chatterjee.mp3" length="44904357" type="audio/mpeg" />
+      <guid isPermaLink="false">Buzzsprout-16440266</guid>
+      <pubDate>Wed, 15 Jan 2025 06:00:00 -0500</pubDate>
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16440266/transcript" type="text/html" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16440266/transcript.json" type="application/json" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16440266/transcript.srt" type="application/x-subrip" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16440266/transcript.vtt" type="text/vtt" />
+      <podcast:chapters url="https://www.buzzsprout.com/2127872/16440266/chapters.json" type="application/json" />
+      <psc:chapters>
+        <psc:chapter start="0:00" title="Exploring EVPN and VXLAN Technology" />
+        <psc:chapter start="15:08" title="EVPN, VxLAN, and Layer 2 Maintenance" />
+        <psc:chapter start="24:27" title="Deploying EVPN and VXLAN Networks" />
+        <psc:chapter start="29:27" title="Understanding BGP EVPN and VXLAN" />
+        <psc:chapter start="41:21" title="VXLAN Load Balancing and Standardization" />
+        <psc:chapter start="47:09" title="Challenges of Writing a Technical Book" />
+        <psc:chapter start="52:55" title="Balancing Work, Family, and Writing" />
+        <psc:chapter start="1:01:08" title="Podcast Subscription and Social Media" />
+      </psc:chapters>
+      <itunes:duration>3740</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <podcast:person role="guest" href="https://blog.noblinkyblinky.com" img="https://storage.buzzsprout.com/2h9ri15pxsjj0d5t3qz48qkbmn7e">A.J. Murray</podcast:person>
+      <podcast:person role="guest" href="https://www.theasciiconstruct.com" img="https://storage.buzzsprout.com/tyzytcpuv56cxy8ypdfjk6892veg">Aninda Chatterjee</podcast:person>
+      <podcast:person role="host" href="https://www.permitipandyandy.com/" img="https://storage.buzzsprout.com/7lbse0s1xgdcc1icfqmda6cn4b9d">Andy Lapteff</podcast:person>
+    </item>
+
+    <!-- Episode 5 -->
+    <item>
+      <itunes:title>Net Eng career success now and in the future, with Dr Nic</itunes:title>
+      <title>Net Eng career success now and in the future, with Dr Nic</title>
+      <itunes:summary><![CDATA[Send us a text What if the future of network engineering hinges on curiosity and adaptability? Join us for an enlightening discussion with Nicholas Calcutti as we navigate the fascinating evolution of networking technologies. Nicholas, with his impressive journey from a desktop support technician to a doctoral student, shares invaluable insights into the triumphs and trials of the networking world. We chat about everything from the first email sent in 1971 to the intricate demands of managing...]]></itunes:summary>
+      <description><![CDATA[<p><a target="_blank" href="https://www.buzzsprout.com/twilio/text_messages/2127872/open_sms">Send us a text</a></p><p>What if the future of network engineering hinges on curiosity and adaptability? Join us for an enlightening discussion with Nicholas Calcutti as we navigate the fascinating evolution of networking technologies. Nicholas, with his impressive journey from a desktop support technician to a doctoral student, shares invaluable insights into the triumphs and trials of the networking world. We chat about everything from the first email sent in 1971 to the intricate demands of managing AI HPC workloads. The transformation driven by software-defined networking and the necessity of foundational skills in a rapidly advancing landscape are at the forefront of our conversation.<br/><br/>Throughout this dynamic exchange, we unravel the complexities of cloud networking, reflecting on the trials and triumphs of operating within platforms like Azure. Our discussion highlights essential skills for today’s network engineers, emphasizing the growing importance of cloud proficiency and automation tools. Nicholas and Kevin share personal stories of overcoming resistance to automation, underscoring the necessity of learning new skills like Python and Terraform. The dialogue also shifts towards the role of network engineers in the era of automation and AI, contemplating the future viability of the profession amid these technological shifts.<br/><br/>Finally, we explore the intriguing balance between specialization and generalism in networking careers. The impact of cloud technologies on IT roles sparks a lively debate, particularly as companies like Twitter reconsider full cloud adoption. Nicholas and Kevin weigh in on the pros and cons of cloud computing, discussing cost, control, and the potential of hybrid solutions. Our discussion is peppered with anecdotes that illuminate the challenges and opportunities in the networking field, offering a hopeful perspective on nurturing curiosity and problem-solving in future generations of network engineers. <br/><br/>Nic&apos;s presentation can be found here:<br/><a href='https://www.technicalcutti.tech/post/tech-coast-conference-slide-deck'>Tech Coast Conference Slide Deck</a><br/><br/>Don&apos;t forget to follow us on social media and check out our website for more insights and updates!</p><p>Find everything AONE right here: <a href='https://linktr.ee/artofneteng'>https://linktr.ee/artofneteng</a></p>]]></description>
+      <content:encoded><![CDATA[<p><a target="_blank" href="https://www.buzzsprout.com/twilio/text_messages/2127872/open_sms">Send us a text</a></p><p>What if the future of network engineering hinges on curiosity and adaptability? Join us for an enlightening discussion with Nicholas Calcutti as we navigate the fascinating evolution of networking technologies. Nicholas, with his impressive journey from a desktop support technician to a doctoral student, shares invaluable insights into the triumphs and trials of the networking world. We chat about everything from the first email sent in 1971 to the intricate demands of managing AI HPC workloads. The transformation driven by software-defined networking and the necessity of foundational skills in a rapidly advancing landscape are at the forefront of our conversation.<br/><br/>Throughout this dynamic exchange, we unravel the complexities of cloud networking, reflecting on the trials and triumphs of operating within platforms like Azure. Our discussion highlights essential skills for today’s network engineers, emphasizing the growing importance of cloud proficiency and automation tools. Nicholas and Kevin share personal stories of overcoming resistance to automation, underscoring the necessity of learning new skills like Python and Terraform. The dialogue also shifts towards the role of network engineers in the era of automation and AI, contemplating the future viability of the profession amid these technological shifts.<br/><br/>Finally, we explore the intriguing balance between specialization and generalism in networking careers. The impact of cloud technologies on IT roles sparks a lively debate, particularly as companies like Twitter reconsider full cloud adoption. Nicholas and Kevin weigh in on the pros and cons of cloud computing, discussing cost, control, and the potential of hybrid solutions. Our discussion is peppered with anecdotes that illuminate the challenges and opportunities in the networking field, offering a hopeful perspective on nurturing curiosity and problem-solving in future generations of network engineers. <br/><br/>Nic&apos;s presentation can be found here:<br/><a href='https://www.technicalcutti.tech/post/tech-coast-conference-slide-deck'>Tech Coast Conference Slide Deck</a><br/><br/>Don&apos;t forget to follow us on social media and check out our website for more insights and updates!</p><p>Find everything AONE right here: <a href='https://linktr.ee/artofneteng'>https://linktr.ee/artofneteng</a></p>]]></content:encoded>
+      <itunes:author>A.J., Andy, Dan, and Kevin</itunes:author>
+      <enclosure url="https://www.buzzsprout.com/2127872/episodes/16116686-net-eng-career-success-now-and-in-the-future-with-dr-nic.mp3" length="54575192" type="audio/mpeg" />
+      <guid isPermaLink="false">Buzzsprout-16116686</guid>
+      <pubDate>Wed, 01 Jan 2025 06:00:00 -0500</pubDate>
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16116686/transcript" type="text/html" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16116686/transcript.json" type="application/json" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16116686/transcript.srt" type="application/x-subrip" />
+      <podcast:transcript url="https://www.buzzsprout.com/2127872/16116686/transcript.vtt" type="text/vtt" />
+      <podcast:chapters url="https://www.buzzsprout.com/2127872/16116686/chapters.json" type="application/json" />
+      <psc:chapters>
+        <psc:chapter start="0:00" title="History and Future of Network Engineering" />
+        <psc:chapter start="7:21" title="Evolution of Networking Technologies" />
+        <psc:chapter start="13:22" title="Networking Evolution and Future Trends" />
+        <psc:chapter start="25:15" title="Understanding Networking in the Cloud" />
+        <psc:chapter start="29:59" title="Overcoming Resistance to Network Automation" />
+        <psc:chapter start="41:19" title="Embracing Generalist Skills in Networking" />
+        <psc:chapter start="44:26" title="Networking Evolution and Trends" />
+        <psc:chapter start="53:48" title="Impact of AI on Networking" />
+        <psc:chapter start="1:05:02" title="Nurturing Curiosity in Networking Careers" />
+        <psc:chapter start="1:14:54" title="Network Engineering Podcast and Social Media" />
+      </psc:chapters>
+      <itunes:duration>4546</itunes:duration>
+      <itunes:keywords></itunes:keywords>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
+
+  </channel>
+</rss>
